@@ -4,7 +4,7 @@ public interface Movie {
 
     String getTitle();
     String getDescription();
-    String getGender();
+    String getGenre();
     int getYear();
     double getPrice();
 

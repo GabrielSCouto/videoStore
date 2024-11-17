@@ -25,7 +25,7 @@ public class Action implements Movie{
     }
 
     @Override
-    public String getGender() {
+    public String getGenre() {
         return "Action";
     }
 
@@ -41,6 +41,6 @@ public class Action implements Movie{
 
     @Override
     public void showInfo() {
-        System.out.println("info");
+        System.out.println("Título: " + title + " | Gênero: Ação | Ano: " + year + " | Preço: R$" + price + " | \nSinopse: " + description);
     }
 }

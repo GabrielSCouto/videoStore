@@ -25,7 +25,7 @@ public class Drama implements Movie{
     }
 
     @Override
-    public String getGender() {
+    public String getGenre() {
         return "Drama";
     }
 

@@ -25,7 +25,7 @@ public class Horror implements Movie{
     }
 
     @Override
-    public String getGender() {
+    public String getGenre() {
         return "Horror";
     }
 
