@@ -20,11 +20,18 @@ public class Client {
 
     @Override
     public String toString(){
-        return "Cliente: " + name + " | CPF: " + id;
+        return name + "/" + id;
     }
 
     public static Client fromCSV(String line){
+        if (line == null || line.trim().isEmpty()) {
+            return null;
+        }
         String[] fields = line.split("/");
+        if (fields.length < 2) {
+            System.out.println("Informações em falta: " + line);
+            return null;
+        }
         return new Client(fields[0],fields[1]);
     }
 }

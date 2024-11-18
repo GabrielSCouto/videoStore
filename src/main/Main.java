@@ -18,7 +18,7 @@ public class Main {
         database.addClients(client2);
 
         System.out.println("CLIENTES CADASTRADOS: ");
-        //database.loadClients().forEach(c -> System.out.println(c.getName() + " - " + c.getId()));
+        database.loadClients().forEach(c -> System.out.println(c.getName() + " - " + c.getId()));
 
         //TESTANDO FILMES//
         MovieFactoryConcrete factory = new MovieFactoryConcrete();
@@ -28,6 +28,8 @@ public class Main {
         //movie1.showInfo();
 
         System.out.println("FILMES CADASTRADOS: ");
+        database.addMovie(movie1);
+
         database.loadMovie().forEach(f -> System.out.println(f.getTitle() + " - " + f.getDescription() + " - " + f.getGenre() + " - " + f.getYear() + " - " + f.getPrice()));
     }
 }
