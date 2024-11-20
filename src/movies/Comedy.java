@@ -36,7 +36,7 @@ public class Comedy implements Movie{
 
     @Override
     public double getPrice() {
-        return 0;
+        return price;
     }
 
     @Override

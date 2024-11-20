@@ -7,7 +7,7 @@ public class Action implements Movie{
     private int year;
     private double price;
 
-    public Action(String title, String description, String gender, int year, double price) {
+    public Action(String title, String description, int year, double price) {
         this.title = title;
         this.description = description;
         this.year = year;
@@ -36,7 +36,7 @@ public class Action implements Movie{
 
     @Override
     public double getPrice() {
-        return 0;
+        return price;
     }
 
     @Override

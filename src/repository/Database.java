@@ -109,7 +109,7 @@ public class Database {
             String line;
             while ((line = reader.readLine()) != null){
                 String[] fields = line.split("/");
-                movies.add(new MovieFactoryConcrete().createMovie(fields[0],fields[1],fields[2],Integer.parseInt(fields[3]),Double.parseDouble(fields[4])));
+                movies.add(new MovieFactoryConcrete().createMovie(fields[0],fields[1],fields[2],Integer.parseInt(fields[3]), Double.parseDouble(fields[4])));
             }
         } catch (IOException e){
             System.out.println("ERRO AO CARREGAR FILMES: " + e.getMessage());

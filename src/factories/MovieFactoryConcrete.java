@@ -1,20 +1,21 @@
 package factories;
 
 import movies.*;
-public class MovieFactoryConcrete {
+public class MovieFactoryConcrete extends MovieFactory {
 
-    public Movie createMovie(String title, String description, String gender, int year, double price){
-        switch (gender.toLowerCase()){
+    @Override
+    public Movie createMovie(String title, String description, String genre, int year, double price){
+        switch (genre.toLowerCase()){
             case "action":
-                return new Action(title, description, gender, year, price);
+                return new Action(title, description, year, price);
             case "horror":
-                return new Action(title, description, gender, year, price);
+                return new Horror(title, description, year, price);
             case "comedy":
-                return new Action(title, description, gender, year, price);
+                return new Comedy(title, description, year, price);
             case "drama":
-                return new Action(title, description, gender, year, price);
+                return new Drama(title, description, year, price);
             default:
-                throw new IllegalArgumentException("Genero não existente: " + gender);
+                throw new IllegalArgumentException("Genero não existente: " + genre);
         }
     }
 }
