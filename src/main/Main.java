@@ -7,10 +7,14 @@ import rental.Rental;
 import repository.Database;
 import clients.Client;
 import strategy.*;
+import main.NavigationMenu;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("BEM-VINDO(A) À LOCADORA!");
+
+        //NavigationMenu.menu();
+
         Database database = Database.getInstance();
 
         //TESTANDO CLIENTES//

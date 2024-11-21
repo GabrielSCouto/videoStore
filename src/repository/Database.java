@@ -90,6 +90,7 @@ public class Database {
         }
         return clients;
     }
+    // MÉTODO PARA LIMPAR CSV CLIENTES
 
     // managing movies
 
@@ -117,5 +118,6 @@ public class Database {
         return movies;
     }
 
+    //  MÉTODO PARA LIMPAR CSV MOVIES
 
 }
