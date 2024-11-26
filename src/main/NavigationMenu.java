@@ -43,8 +43,9 @@ public class NavigationMenu {
 
                     int optionMovie;
                     do {
-                        System.out.println("---MENU DO CATÁLOGO---");
+                        System.out.println("\n---MENU DO CATÁLOGO---");
                         System.out.println("\n1 - INSERIR FILME\n2 - VER CATÁLOGO\n3 - ATUALIZAR CATÁLOGO\n4 - REMOVER FILME\n5 - LIMPAR TUDO\n0 - SAIR");
+                        System.out.print("\nSELECIONE UMA OPÇÃO: ");
                         while (true){
                             try {
                                 optionMovie = sc.nextInt();
@@ -58,32 +59,32 @@ public class NavigationMenu {
                         }
                         switch (optionMovie){
                             case 1:
-                                System.out.println(" registrar filme");
+                                System.out.println("\n---REGISTRAR FILME---\n");
 
-                                System.out.println("TÍTULO: ");
+                                System.out.print("TÍTULO: ");
                                 String title = sc.nextLine();
-                                System.out.println("DESCRIÇÃO: ");
+                                System.out.print("DESCRIÇÃO: ");
                                 String description = sc.nextLine();
-                                System.out.println("GÊNERO: ");
+                                System.out.print("GÊNERO: ");
                                 String genre = sc.nextLine();
-                                System.out.println("ANO DE LANÇAMENTO: ");
+                                System.out.print("ANO DE LANÇAMENTO: ");
                                 int year = sc.nextInt();
                                 //sc.nextLine();
-                                System.out.println("PREÇO");
+                                System.out.print("PREÇO: R$");
                                 double price = sc.nextDouble();
 
                                 Movie movie = fc.createMovie(title,description,genre,year,price);
                                 db.addMovie(movie);
 
-                                System.out.println("FILME ADICIONADO AO CATÁLOGO!");
+                                System.out.println("\nFILME ADICIONADO AO CATÁLOGO!\n");
                                 break;
                             case 2:
-                                System.out.println(" ver filmes");
+                                System.out.println("\n---FILMES REGISTRADOS---\n");
 
-                                db.loadMovie().forEach(f -> System.out.println(f.getTitle() + " - " + f.getDescription() + " - " + f.getGenre() + " - " + f.getYear() + " - " + f.getPrice()));
+                                db.loadMovie().forEach(f -> System.out.println("FILME: "+ f.getTitle() + " |DESCRIÇÃO: " + f.getDescription() + " |GÊNERO: " + f.getGenre() + " |LANÇAMENTO: " + f.getYear() + " |PREÇO: R$" + f.getPrice()));
                                 break;
                             case 3:
-                                System.out.println(" atualizar filmes");
+                                System.out.println("\n---ATUALIZAR FILME---\n");
 
                                 System.out.print("NOME DO FILME A SE ALTERAR: ");
                                 String oldTitle = sc.nextLine();
@@ -100,10 +101,10 @@ public class NavigationMenu {
                                 double newPrice = sc.nextDouble();
 
                                 db.updateMovie(oldTitle, newTitle, newGenre, newDescription, newYear, newPrice);
-                                System.out.println("\nFILME ATUALIZADO COM SUCESSO!");
+                                System.out.println("\nFILME ATUALIZADO COM SUCESSO!\n");
                                 break;
                             case 4:
-                                System.out.println("deletar filmes");
+                                System.out.println("\n---REMOVER FILMES---\n");
                                 break;
                             case 5:
                                 System.out.println("Limpar tudo");
@@ -117,9 +118,10 @@ public class NavigationMenu {
                     } while (optionMovie != 0);
                     break;
                 case 2:
+                    Database db1 = Database.getInstance();
                     int optionClient;
                     do {
-                        System.out.println("---MENU DE CLIENTES---");
+                        System.out.println("\n---MENU DE CLIENTES---");
                         System.out.println("\n1 - REGISTRAR CLIENTE\n2 - VER CLIENTES\n3 - ATUALIZAR INFO.\n4 - REMOVER CLIENTE\n5 - LIMPAR TUDO\n0 - SAIR");
                         while (true){
                             try {
@@ -133,7 +135,19 @@ public class NavigationMenu {
                         }
                         switch (optionClient){
                             case 1:
-                                System.out.println(" registrar cliente");
+
+                                System.out.println("\n---REGISTRAR CLIENTE---\n");
+
+                                sc.nextLine();
+                                System.out.print("NOME: ");
+                                String name = sc.nextLine();
+                                System.out.print("CPF: ");
+                                String id = sc.nextLine();
+
+                                Client client = new Client(name, id);
+                                db1.addClients(client);
+
+                                System.out.println("\nCLIENTE REGISTRADO COM SUCESSO!\n");
                                 break;
                             case 2:
                                 System.out.println(" ver cliente");

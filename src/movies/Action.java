@@ -35,7 +35,7 @@ public class Action implements Movie{
 
     @Override
     public String getGenre() {
-        return genre;
+        return "Action";
     }
 
     @Override

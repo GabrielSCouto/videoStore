@@ -40,29 +40,19 @@ public class Comedy implements Movie{
     }
 
     @Override
-    public void setTitle(String title) {
-
-    }
+    public void setTitle(String title) {}
 
     @Override
-    public void setDescription(String description) {
-
-    }
+    public void setDescription(String description) {}
 
     @Override
-    public void setGenre(String genre) {
-
-    }
+    public void setGenre(String genre) {}
 
     @Override
-    public void setYear(int year) {
-
-    }
+    public void setYear(int year) {}
 
     @Override
-    public void setPrice(double price) {
-
-    }
+    public void setPrice(double price) {}
 
     @Override
     public void showInfo() {

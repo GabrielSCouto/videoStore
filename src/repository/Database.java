@@ -47,7 +47,8 @@ public class Database {
     // saves client on file
     public void addClients(Client client){
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(clientsFile, true))){
-            writer.write(client.toString());
+            //writer.write(client.toString());
+            writer.write(client.toCSV());
             writer.newLine();
         } catch (IOException e){
             System.out.println("ERRO AO SALVAR CLIENTE: " + e.getMessage());
@@ -61,16 +62,17 @@ public class Database {
             String line;
             reader.readLine();
             while ((line = reader.readLine()) != null){
-                String[] data = line.split("/");
-                if (data.length == 2){
-                    String name = data[0];
-                    String id = data[1];
-                    Client client = new Client(name, id);
-                    clients.add(client);
-                }
+//                String[] data = line.split("/");
+//                if (data.length == 2){
+//                    String name = data[0];
+//                    String id = data[1];
+//                    Client client = new Client(name, id);
+//                    clients.add(client);
+//                }
+                clients.add(Client.fromCSV(line));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("Erro ao carregar clientes: " + e.getMessage());
         }
         return clients;
     }
