@@ -8,6 +8,14 @@ public interface Movie {
     int getYear();
     double getPrice();
 
+    void setTitle(String title);
+    void setDescription(String description);
+    void setGenre(String genre);
+    void setYear(int year);
+    void setPrice(double price);
+
     //temporario
     void showInfo();
+    String toCSV();
+    Movie fromCSV(String csv);
 }

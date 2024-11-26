@@ -54,22 +54,6 @@ public class Database {
         }
     }
 
-    // loads clients file
-//    public List<Client> loadClients(){
-//        List<Client> clients = new ArrayList<>();
-//        try (BufferedReader reader = new BufferedReader(new FileReader(clientsFile))){
-//            String line;
-//            while ((line = reader.readLine()) != null){
-//                Client client = Client.fromCSV(line);
-//                if (client != null){
-//                    clients.add(client);
-//                }
-//            }
-//        } catch (IOException e){
-//            System.out.println("ERRO AO CARREGAR CLIENTES: " + e.getMessage());
-//        }
-//        return clients;
-//    }
 
     public List<Client> loadClients(){
         List<Client> clients = new ArrayList<>();
@@ -118,6 +102,24 @@ public class Database {
         return movies;
     }
 
+
+    public void updateMovie(String oldTitle, String newTitle, String newDescription, String newGenre, int newYear, double newPrice){
+        List<Movie> movies = loadMovie();
+        try (BufferedWriter writer= new BufferedWriter(new FileWriter(moviesFile))){
+            for (Movie movie : movies){
+                if (movie.getTitle().equalsIgnoreCase(oldTitle)) {
+                    movie.setTitle(newTitle);
+                    movie.setDescription(newDescription);
+                    movie.setGenre(newGenre);
+                    movie.setYear(newYear);
+                    movie.setPrice(newPrice);
+                }
+                writer.write(movie.toCSV());
+            }
+        } catch (IOException e) {
+            System.out.println("Erro atualizar cliente " + e.getMessage());
+        }
+    }
     //  MÉTODO PARA LIMPAR CSV MOVIES
 
 }

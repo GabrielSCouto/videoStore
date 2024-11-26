@@ -1,13 +1,15 @@
 package factories;
 
 import movies.*;
+import main.NavigationMenu;
+
 public class MovieFactoryConcrete extends MovieFactory {
 
     @Override
     public Movie createMovie(String title, String description, String genre, int year, double price){
         switch (genre.toLowerCase()){
             case "action":
-                return new Action(title, description, year, price);
+                return new Action(title, description, genre, year, price);
             case "horror":
                 return new Horror(title, description, year, price);
             case "comedy":
@@ -16,6 +18,7 @@ public class MovieFactoryConcrete extends MovieFactory {
                 return new Drama(title, description, year, price);
             default:
                 throw new IllegalArgumentException("Genero não existente: " + genre);
+
         }
     }
 }

@@ -40,7 +40,42 @@ public class Comedy implements Movie{
     }
 
     @Override
+    public void setTitle(String title) {
+
+    }
+
+    @Override
+    public void setDescription(String description) {
+
+    }
+
+    @Override
+    public void setGenre(String genre) {
+
+    }
+
+    @Override
+    public void setYear(int year) {
+
+    }
+
+    @Override
+    public void setPrice(double price) {
+
+    }
+
+    @Override
     public void showInfo() {
         System.out.println("info");
+    }
+
+    @Override
+    public String toCSV() {
+        return "";
+    }
+
+    @Override
+    public Movie fromCSV(String csv) {
+        return null;
     }
 }
