@@ -18,6 +18,14 @@ public class Client {
         return id;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     // Converte o objeto para o formato CSV
     public String toCSV() {
         return name + "/" + id;
@@ -26,12 +34,12 @@ public class Client {
     // Cria um objeto Client a partir de uma linha CSV
     public static Client fromCSV(String csv) {
         String[] fields = csv.split("/");
-        if (fields.length != 2) {
+        if (fields.length < 0) {
             throw new IllegalArgumentException("Linha CSV inválida para Client: " + csv);
         }
-        String nome = fields[0].trim();
+        String name = fields[0].trim();
         String id = fields[1].trim();
-        return new Client(nome, id);
+        return new Client(name, id);
     }
 
     @Override
@@ -39,15 +47,4 @@ public class Client {
         return name + "/" + id;
     }
 
-//    public static Client fromCSV(String line){
-//        if (line == null || line.trim().isEmpty()) {
-//            return null;
-//        }
-//        String[] fields = line.split("/");
-//        if (fields.length < 2) {
-//            System.out.println("Informações em falta: " + line);
-//            return null;
-//        }
-//        return new Client(fields[0],fields[1]);
-//    }
 }

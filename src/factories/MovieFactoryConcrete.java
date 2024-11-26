@@ -11,11 +11,11 @@ public class MovieFactoryConcrete extends MovieFactory {
             case "action":
                 return new Action(title, description, genre, year, price);
             case "horror":
-                return new Horror(title, description, year, price);
+                return new Horror(title, description, genre, year, price);
             case "comedy":
-                return new Comedy(title, description, year, price);
+                return new Comedy(title, description, genre, year, price);
             case "drama":
-                return new Drama(title, description, year, price);
+                return new Drama(title, description, genre, year, price);
             default:
                 throw new IllegalArgumentException("Genero não existente: " + genre);
 
