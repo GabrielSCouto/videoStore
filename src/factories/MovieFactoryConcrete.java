@@ -17,7 +17,7 @@ public class MovieFactoryConcrete extends MovieFactory {
             case "drama":
                 return new Drama(title, description, genre, year, price);
             default:
-                throw new IllegalArgumentException("Genero não existente: " + genre);
+                throw new IllegalArgumentException("Non-existent genre: " + genre);
 
         }
     }

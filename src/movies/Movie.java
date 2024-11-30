@@ -14,7 +14,6 @@ public interface Movie {
     void setYear(int year);
     void setPrice(double price);
 
-    //temporario
     void showInfo();
     String toCSV();
     Movie fromCSV(String csv);

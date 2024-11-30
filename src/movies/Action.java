@@ -58,7 +58,7 @@ public class Action implements Movie{
 
     @Override
     public void showInfo() {
-        System.out.println("Título: " + title + " | Gênero: Ação | Ano: " + year + " | Preço: R$" + price + " | \nSinopse: " + description);
+        System.out.println("TITLE: " + title + " | GENRE: Action | LAUNCH: " + year + " | PRICE: $" + price + " | \nSYNOPSIS: " + description);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class Action implements Movie{
     public Movie fromCSV(String csv) {
         String[] fields = csv.split("/");
         if (fields.length != 5) {
-            throw new IllegalArgumentException("Linha CSV inválida para filme: " + csv);
+            throw new IllegalArgumentException("INVALID CSV LINE FOR MOVIE: " + csv);
         }
         String title = fields[0].trim();
         String description = fields[1].trim();

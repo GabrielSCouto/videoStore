@@ -18,105 +18,103 @@ public class NavigationMenu {
         int option;
         do {
             System.out.println("----------------------------------");
-            System.out.println("BEM-VINDO(A) À LOCADORA VIDEO_RENT!");
+            System.out.println("WELCOME TO VIDEO_RENT!");
             System.out.println("----------------------------------");
             System.out.println();
 
-            System.out.println("-----MENU-----\n1 - CATÁLOGO\n2 - CLIENTE\n3 - OPERAÇÃO\n0 - SAIR");
+            System.out.println("-----MENU-----\n1 - CATALOG\n2 - CLIENTS\n3 - OPERATIONS\n0 - CLOSE");
             while (true){
                 try {
                     option = sc.nextInt();
                     sc.nextLine();
                     break;
                 } catch (Exception e){
-                    System.err.println("Erro: " + e);
-                    System.err.print("Tente novamente: ");
+                    System.err.println("Error: " + e);
+                    System.err.print("Try again: ");
                     sc.next();
                 }
             }
             switch (option){
                 case 1:
-                    System.out.println("catalogo");
-
                     MovieFactoryConcrete fc = new MovieFactoryConcrete();
                     Database db = Database.getInstance();
 
                     int optionMovie;
                     do {
-                        System.out.println("\n---MENU DO CATÁLOGO---");
-                        System.out.println("\n1 - INSERIR FILME\n2 - VER CATÁLOGO\n3 - ATUALIZAR CATÁLOGO\n4 - REMOVER FILME\n5 - LIMPAR TUDO\n0 - SAIR");
-                        System.out.print("\nSELECIONE UMA OPÇÃO: ");
+                        System.out.println("\n---CATALOG MENU---");
+                        System.out.println("\n1 - INSERT MOVIE\n2 - SEE CATALOG\n3 - UPDATE CATALOG\n4 - REMOVE MOVIE\n5 - RESET ALL\n0 - CLOSE");
+                        System.out.print("\nSELECT AN OPTION: ");
                         while (true){
                             try {
                                 optionMovie = sc.nextInt();
                                 sc.nextLine();
                                 break;
                             } catch (Exception e){
-                                System.err.println("Erro: " + e);
-                                System.err.print("Tente novamente: ");
+                                System.err.println("Error: " + e);
+                                System.err.print("Try again: ");
                                 sc.next();
                             }
                         }
                         switch (optionMovie){
                             case 1:
-                                System.out.println("\n---REGISTRAR FILME---\n");
+                                System.out.println("\n---REGISTER MOVIE---\n");
 
-                                System.out.print("TÍTULO: ");
+                                System.out.print("TITLE: ");
                                 String title = sc.nextLine();
-                                System.out.print("DESCRIÇÃO: ");
+                                System.out.print("DESCRIPTION: ");
                                 String description = sc.nextLine();
-                                System.out.print("GÊNERO: ");
+                                System.out.print("GENRE: ");
                                 String genre = sc.nextLine();
-                                System.out.print("ANO DE LANÇAMENTO: ");
+                                System.out.print("LAUNCH YEAR: ");
                                 int year = sc.nextInt();
-                                System.out.print("PREÇO: R$");
+                                System.out.print("PRICE: $");
                                 double price = sc.nextDouble();
 
                                 Movie movie = fc.openMovie(title,description,genre,year,price);
                                 db.addMovie(movie);
 
-                                System.out.println("\nFILME ADICIONADO AO CATÁLOGO!\n");
+                                System.out.println("\nSUCCESSFULLY ADDED MOVIE TO CATALOG!\n");
                                 break;
                             case 2:
-                                System.out.println("\n---FILMES REGISTRADOS---\n");
+                                System.out.println("\n---REGISTERED MOVIES---\n");
 
-                                db.loadMovie().forEach(f -> System.out.println("FILME: "+ f.getTitle() + " |DESCRIÇÃO: " + f.getDescription() + " |GÊNERO: " + f.getGenre() + " |LANÇAMENTO: " + f.getYear() + " |PREÇO: R$" + f.getPrice()));
+                                db.loadMovie().forEach(f -> System.out.println("MOVIE: "+ f.getTitle() + " |DESCRIPTION: " + f.getDescription() + " |GENRE: " + f.getGenre() + " |LAUNCH: " + f.getYear() + " |PRICE: $" + f.getPrice()));
                                 break;
                             case 3:
-                                System.out.println("\n---ATUALIZAR FILME---\n");
+                                System.out.println("\n---UPDATE MOVIE---\n");
 
-                                System.out.print("NOME DO FILME A SE ALTERAR: ");
+                                System.out.print("NAME OF MOVIE TO BE ALTERED: ");
                                 String oldTitle = sc.nextLine();
-                                System.out.print("NOVO TÍTULO: ");
+                                System.out.print("NEW TITLE: ");
                                 String newTitle = sc.nextLine();
-                                System.out.print("NOVA DESCRIÇÃO: ");
+                                System.out.print("NEW DESCRIPTION: ");
                                 String newDescription = sc.nextLine();
-                                System.out.print("NOVO GÊNERO: ");
+                                System.out.print("NEW GENRE: ");
                                 String newGenre = sc.nextLine();
-                                System.out.print("NOVO ANO: ");
+                                System.out.print("NEW LAUNCH YEAR: ");
                                 int newYear = sc.nextInt();
                                 sc.nextLine();
-                                System.out.print("NOVO PREÇO: R$");
+                                System.out.print("NEW PRICE: $");
                                 double newPrice = sc.nextDouble();
 
                                 db.updateMovie(oldTitle, newTitle, newDescription, newGenre, newYear, newPrice);
-                                System.out.println("\nFILME ATUALIZADO COM SUCESSO!\n");
+                                System.out.println("\nSUCCESSFULLY UPDATED MOVIE!\n");
                                 break;
                             case 4:
-                                System.out.println("\n---REMOVER FILME---\n");
-                                System.out.println("Digite o título do filme a remover:");
+                                System.out.println("\n---DELETE MOVIE---\n");
+                                System.out.println("INSERT TITLE TO DELETE:");
                                 String titleRemove = sc.nextLine();
                                 db.removeMovie(titleRemove);
-                                System.out.println("Filme removido com sucesso!");
+                                System.out.println("SUCCESSFULLY DELETED MOVIE!");
                                 break;
                             case 5:
-                                System.out.println("\n---(!!!)LIMPAR TUDO(!!!)---");
+                                System.out.println("\n---(!!!)RESET ALL(!!!)---");
                                 sc.nextLine();
-                                System.out.print("Tem certeza que disso? (S/N): ");
+                                System.out.print("ARE YOU REALLY SURE? (Y/N): ");
                                 String confirm = sc.nextLine();
-                                if (confirm.equalsIgnoreCase("s")){
+                                if (confirm.equalsIgnoreCase("y")){
                                     db.eraseAllMovies();
-                                    System.out.println("Arquivo CSV filmes limpo com sucesso!");
+                                    System.out.println("SUCCESSFULLY RESET MOVIE CSV FILE!");
                                     break;
                                 }
 
@@ -124,7 +122,7 @@ public class NavigationMenu {
                             case 0:
                                 break;
                             default:
-                                System.out.println("OPÇÃO INVÁLIDA! INDIQUE NOVAMENTE.");
+                                System.out.println("INVALID OPTION! TRY AGAIN.");
                                 break;
                         }
                     } while (optionMovie != 0);
@@ -133,69 +131,68 @@ public class NavigationMenu {
                     Database db1 = Database.getInstance();
                     int optionClient;
                     do {
-                        System.out.println("\n---MENU DE CLIENTES---");
-                        System.out.println("\n1 - REGISTRAR CLIENTE\n2 - VER CLIENTES\n3 - ATUALIZAR INFO.\n4 - REMOVER CLIENTE\n5 - LIMPAR TUDO\n0 - SAIR");
+                        System.out.println("\n---CLIENT'S MENU---");
+                        System.out.println("\n1 - REGISTER CLIENT\n2 - SHOW CLIENTS\n3 - UPDATE INFO.\n4 - REMOVE CLIENT\n5 - RESET ALL \n0 - CLOSE");
                         while (true){
                             try {
                                 optionClient = sc.nextInt();
                                 break;
                             } catch (Exception e){
-                                System.err.println("Erro: " + e);
-                                System.err.print("Tente novamente: ");
+                                System.err.println("Error: " + e);
+                                System.err.print("Try again: ");
                                 sc.next();
                             }
                         }
                         switch (optionClient){
                             case 1:
 
-                                System.out.println("\n---REGISTRAR CLIENTE---\n");
+                                System.out.println("\n---REGISTER CLIENT---\n");
 
                                 sc.nextLine();
-                                System.out.print("NOME: ");
+                                System.out.print("NAME: ");
                                 String name = sc.nextLine();
-                                System.out.print("CPF: ");
+                                System.out.print("ID: ");
                                 String id = sc.nextLine();
 
                                 Client client = new Client(name, id);
                                 db1.addClients(client);
 
-                                System.out.println("\nCLIENTE REGISTRADO COM SUCESSO!\n");
+                                System.out.println("\nSUCCESSFULLY ADDED CLIENT!\n");
                                 break;
                             case 2:
-                                System.out.println(" ver cliente");
-                                System.out.println("\n---CLIENTES REGISTRADOS---\n");
+                                System.out.println("\n---REGISTERED CLIENTS---\n");
 
-                                db1.loadClients().forEach(f -> System.out.println("NOME: "+ f.getName() + " |CPF: " + f.getId()));
+                                db1.loadClients().forEach(f -> System.out.println("NAME: "+ f.getName() + " |ID: " + f.getId()));
 
                                 break;
                             case 3:
-                                System.out.println("\n---ATUALIZAR CLIENTE---");
+                                System.out.println("\n---UPDATE CLIENT---");
                                 sc.nextLine();
-                                System.out.print("\nDigite o CPF do cliente a atualizar: ");
+                                System.out.print("\nINSERT CLIENT ID: ");
                                 String idUpdate = sc.nextLine();
-                                System.out.print("Digite o novo nome: ");
+                                System.out.print("NEW NAME: ");
                                 String newName = sc.nextLine();
-                                System.out.print("Digite o novo CPF: ");
+                                System.out.print("NEW ID: ");
                                 String newId = sc.nextLine();
                                 db1.updateClient(idUpdate, newName, newId);
-                                System.out.println("\nCliente atualizado com sucesso!");
+                                System.out.println("\nSUCCESSFULLY UPDATED CLIENT!");
                                 break;
                             case 4:
-                                System.out.println("\n---DELETAR CLIENTE---");
+                                System.out.println("\n---DELETE CLIENT---");
                                 sc.nextLine();
-                                System.out.print("Digite o CPF do cliente a remover: ");
+                                System.out.print("INSERT CLIENT ID (Permanent action!): ");
                                 String idRemove = sc.nextLine();
                                 db1.removeClient(idRemove);
-                                System.out.println("\nCliente removido com sucesso!");
+                                System.out.println("\nSUCCESSFULLY DELETED CLIENT!");
                                 break;
                             case 5:
-                                System.out.println("\n---(!!!)LIMPAR TUDO(!!!)---");
+                                System.out.println("\n---(!!!)RESET ALL(!!!)---");
                                 sc.nextLine();
-                                System.out.print("Tem certeza que disso? (S/N): ");
+                                System.out.print("ARE YOU REALLY SURE? (Y/N): ");
                                 String confirm = sc.nextLine();
-                                if (confirm.equalsIgnoreCase("s")){
+                                if (confirm.equalsIgnoreCase("y")){
                                     db1.eraseAllClients();
-                                    System.out.println("Arquivo CSV clientes limpo com sucesso!");
+                                    System.out.println("SUCCESSFULLY RESET CLIENT CSV FILE!");
                                     break;
                                 }
 
@@ -203,27 +200,26 @@ public class NavigationMenu {
                             case 0:
                                 break;
                             default:
-                                System.out.println("OPÇÃO INVÁLIDA! INDIQUE NOVAMENTE.");
+                                System.out.println("INVALID OPTION! TRY AGAIN.");
                                 break;
                         }
                     } while (optionClient != 0);
                     break;
 
-                // PARA ALUGAR
+
                 case 3:
                     Database db2 = Database.getInstance();
                     String movieName;
                     String clientID;
                     int optionRental;
                     do {
-                        System.out.println("---MENU DE ALUGUEL---");
+                        System.out.println("---RENTAL MENU---");
 
-                        System.out.print("DIGITE O NOME DO FILME (ou 0 para sair): ");
+                        System.out.print("INSERT MOVIE NAME (or 0 to close tab): ");
                         movieName = sc.nextLine();
 
                         if (movieName.equals("0")) break;
 
-                        // Verificar se o filme existe no catálogo
                         Movie selectedMovie = null;
                         for (Movie movie : db2.loadMovie()) {
                             if (movie.getTitle().equalsIgnoreCase(movieName)) {
@@ -233,11 +229,11 @@ public class NavigationMenu {
                         }
 
                         if (selectedMovie == null) {
-                            System.out.println("FILME NÃO ENCONTRADO! TENTE NOVAMENTE.");
+                            System.out.println("MOVIE NOT FOUND! TRY AGAIN.");
                             continue;
                         }
 
-                        System.out.print("DIGITE O CPF DO CLIENTE: ");
+                        System.out.print("CLIENT ID: ");
                         clientID = sc.nextLine();
 
                         Client selectedClient = null;
@@ -249,34 +245,34 @@ public class NavigationMenu {
                         }
 
                         if (selectedClient == null) {
-                            System.out.println("CLIENTE NÃO ENCONTRADO! TENTE NOVAMENTE.");
-                            continue; // Retorna ao início do loop
+                            System.out.println("CLIENT NOT FOUND! TRY AGAIN.");
+                            continue;
                         }
 
-                        System.out.println("\n1 - PREÇO NORMAL\n2 - BLACK FRIDAY");
-                        System.out.print("\nESCOLHA A ESTRATÉGIA DE PREÇO: ");
+                        System.out.println("\n1 - NORMAL PRICE\n2 - BLACK FRIDAY PRICE");
+                        System.out.print("\nCHOOSE PRICING STRATEGY: ");
 
                         while (true) {
                             try {
                                 optionRental = sc.nextInt();
-                                sc.nextLine(); // Consumir o caractere de nova linha
+                                sc.nextLine();
                                 if (optionRental == 1 || optionRental == 2) break;
-                                else System.out.println("OPÇÃO INVÁLIDA. TENTE NOVAMENTE.");
+                                else System.out.println("INVALID OPTION! TRY AGAIN.");
                             } catch (Exception e) {
-                                System.err.println("Entrada inválida! Digite um número.");
-                                sc.next(); // Limpar entrada inválida
+                                System.err.println("INVALID INPUT! INSERT A NUMBER.");
+                                sc.next();
                             }
                         }
 
                         PriceStrategy priceStrategy = optionRental == 1 ? new NormalPrice() : new BFPrice();
                         Rental rental = new Rental(selectedMovie, priceStrategy);
-                        System.out.println("FILME ALUGADO COM SUCESSO!");
+                        System.out.println("SUCCESSFULLY RENTED MOVIE!");
                         rental.showInfo();
 
                     } while (true);
                     break;
                 default:
-                    System.out.println("");
+                    System.out.println();
                     break;
             }
         } while (option != 0);

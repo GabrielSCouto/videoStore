@@ -26,16 +26,16 @@ public class Client {
         this.id = id;
     }
 
-    // Converte o objeto para o formato CSV
+
     public String toCSV() {
         return name + "/" + id;
     }
 
-    // Cria um objeto Client a partir de uma linha CSV
+    // Creates object Client a from CSV line
     public static Client fromCSV(String csv) {
         String[] fields = csv.split("/");
         if (fields.length < 0) {
-            throw new IllegalArgumentException("Linha CSV inválida para Client: " + csv);
+            throw new IllegalArgumentException("INVALID CSV LINE FOR CLIENT: " + csv);
         }
         String name = fields[0].trim();
         String id = fields[1].trim();
