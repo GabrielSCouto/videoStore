@@ -17,7 +17,7 @@ public class Rental {
     }
 
     public void showInfo(){
-        System.out.println("Filme: " + movie.getTitle() + " | Gênero: " + movie.getGenre() +
-                " | Preço final: R$" + finalPrice());
+        System.out.println("Movie: " + movie.getTitle() + " | Genre: " + movie.getGenre() +
+                " | Final price: $" + finalPrice());
     }
 }

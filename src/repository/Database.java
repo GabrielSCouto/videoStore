@@ -34,7 +34,7 @@ public class Database {
             new File(CLIENTS_FILE).createNewFile();
             new File(MOVIES_FILE).createNewFile();
         } catch (IOException e){
-            System.out.println("Erro ao gerar arquivos: " + e.getMessage());
+            System.out.println("FAILED TO GENERATE FILES: " + e.getMessage());
         }
     }
 
@@ -45,7 +45,7 @@ public class Database {
             writer.write(client.toCSV());
             writer.newLine();
         } catch (IOException e){
-            System.out.println("ERRO AO SALVAR CLIENTE: " + e.getMessage());
+            System.out.println("FAILED TO SAVE CLIENTS: " + e.getMessage());
         }
     }
 
@@ -58,7 +58,7 @@ public class Database {
                 clients.add(Client.fromCSV(line));
             }
         } catch (IOException e) {
-            System.err.println("Erro ao carregar clientes: " + e.getMessage());
+            System.err.println("FAILED TO LOAD CLIENTS: " + e.getMessage());
         }
         return clients;
     }
@@ -75,7 +75,7 @@ public class Database {
                 writer.newLine();
             }
         } catch (IOException e) {
-            System.err.println("Erro ao atualizar cliente: " + e.getMessage());
+            System.err.println("FAILED TO UPDATE CLIENT: " + e.getMessage());
         }
     }
 
@@ -89,14 +89,14 @@ public class Database {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Erro ao remover cliente: " + e.getMessage());
+            System.err.println("FAILED TO DELETE CLIENT: " + e.getMessage());
         }
     }
 
     public void eraseAllClients() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(CLIENTS_FILE))) {
         } catch (IOException e) {
-            System.err.println("Erro ao limpar clientes: " + e.getMessage());
+            System.err.println("FAILED TO RESET CLIENTS: " + e.getMessage());
         }
     }
 
@@ -107,7 +107,7 @@ public class Database {
             writer.write(movie.getTitle() + "/" + movie.getDescription() + "/" + movie.getGenre() + "/" + movie.getYear() + "/" + movie.getPrice());
             writer.newLine();
         } catch (IOException e){
-            System.out.println("ERRO AO SALVAR FILME: " + e.getMessage());
+            System.out.println("FAILED TO SAVE MOVIE: " + e.getMessage());
         }
     }
 
@@ -121,7 +121,7 @@ public class Database {
                 movies.add(new MovieFactoryConcrete().createMovie(fields[0],fields[1],fields[2],Integer.parseInt(fields[3]), Double.parseDouble(fields[4])));
             }
         } catch (IOException e){
-            System.out.println("ERRO AO CARREGAR FILMES: " + e.getMessage());
+            System.out.println("FAILED TO LOAD MOVIES: " + e.getMessage());
         }
         return movies;
     }
@@ -140,7 +140,7 @@ public class Database {
                 writer.write(movie.toCSV());
             }
         } catch (IOException e) {
-            System.out.println("Erro atualizar cliente " + e.getMessage());
+            System.out.println("FAILED TO UPDATE MOVIE" + e.getMessage());
         }
     }
 
@@ -154,14 +154,14 @@ public class Database {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Erro ao remover filme: " + e.getMessage());
+            System.err.println("FAILED TO DELETE MOVIE: " + e.getMessage());
         }
     }
 
     public void eraseAllMovies() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(MOVIES_FILE))) {
         } catch (IOException e) {
-            System.err.println("Erro ao limpar catálogo: " + e.getMessage());
+            System.err.println("FAILED TO RESET CATALOG: " + e.getMessage());
         }
     }
 }
